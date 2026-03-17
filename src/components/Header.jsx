@@ -34,7 +34,7 @@ function Header() {
             </ul>
 
             <ul className="flex list-none gap-[18px]">
-                <li className="text-[22px] transition-all duration-300 hover:text-[#777777] hover:scale-[1.15] hover:[text-shadow:0_0_8px_rgba(119,119,119,0.8)]"><a href="https://github.com/aswinbino/Aswin_portfolio_" target="_blank" rel="noopener noreferrer" className="text-[#ccc] inherit-color"><FontAwesomeIcon icon={faGithub} /></a></li>
+                <li className="text-[22px] transition-all duration-300 hover:text-[#777777] hover:scale-[1.15] hover:[text-shadow:0_0_8px_rgba(119,119,119,0.8)]"><a href="https://github.com/aswinbino/Aswin_portfolio" target="_blank" rel="noopener noreferrer" className="text-[#ccc] inherit-color"><FontAwesomeIcon icon={faGithub} /></a></li>
                 <li className="text-[22px] transition-all duration-300 hover:text-[#777777] hover:scale-[1.15] hover:[text-shadow:0_0_8px_rgba(119,119,119,0.8)]"><a href="#" className="text-[#ccc] inherit-color"><FontAwesomeIcon icon={faInstagram} /></a></li>
                 <li className="text-[22px] transition-all duration-300 hover:text-[#777777] hover:scale-[1.15] hover:[text-shadow:0_0_8px_rgba(119,119,119,0.8)]"><a href="#" className="text-[#ccc] inherit-color"><FontAwesomeIcon icon={faLinkedin} /></a></li>
             </ul>

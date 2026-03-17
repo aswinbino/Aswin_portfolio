@@ -50,7 +50,7 @@ export default function Hero() {
       {/* Buttons — Centered for better alignment */}
       <div className="absolute z-20 flex gap-[20px] left-1/2 -translate-x-1/2" style={{ top: '80%' }}>
         <a href="#contact" className="no-underline px-[30px] py-[12px] rounded-[8px] text-[16px] font-semibold text-white border-2 border-white/30 bg-black/40 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-[#777777] hover:text-white hover:-translate-y-[3px] hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)]">Contact</a>
-        <a href="https://github.com/aswinbino/Aswin_portfolio_" target="_blank" rel="noopener noreferrer" className="no-underline px-[30px] py-[12px] rounded-[8px] text-[16px] font-semibold text-white border-2 border-white/30 bg-black/40 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-[#777777] hover:text-white hover:-translate-y-[3px] hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)]">GitHub</a>
+        <a href="https://github.com/aswinbino/Aswin_portfolio" target="_blank" rel="noopener noreferrer" className="no-underline px-[30px] py-[12px] rounded-[8px] text-[16px] font-semibold text-white border-2 border-white/30 bg-black/40 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-[#777777] hover:text-white hover:-translate-y-[3px] hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)]">GitHub</a>
       </div>
 
     </div>
