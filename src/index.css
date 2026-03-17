@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        min-height: 100vh;
+        margin: 0;
+        background: radial-gradient(circle at center,
+                #ffffff 0%,
+                #d0d0d0 25%,
+                #9d9d9d 50%,
+                #646464 70%,
+                #292929 90%,
+                #000000 100%);
+        background-size: 200% 200%;
+        animation: bgShift 15s ease infinite;
+    }
+}
+
+.hero-text {
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
