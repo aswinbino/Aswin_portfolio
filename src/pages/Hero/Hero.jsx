@@ -45,7 +45,7 @@ export default function Hero() {
               </a>
             </div>
             <h1 className="text-[clamp(2.5rem,10vw,11rem)] font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "300ms" }}>
-              FULL STACK
+              FULL STACK / SOFTWARE
             </h1>
           </div>
         </div>
@@ -83,6 +83,17 @@ export default function Hero() {
           <p className="text-[10px] md:text-xs text-muted-foreground pt-2 md:pt-6 leading-relaxed max-w-[250px] md:max-w-[200px] font-medium uppercase tracking-widest animate-fadeIn" style={{ animationDelay: "800ms" }}>
             Open to all forms of remote collaboration, internships, and technical contracts.
           </p>
+        </div>
+
+        {/* Line 4: PROMPT ENGINEER */}
+        <div className="flex flex-row items-center justify-start md:justify-end gap-4 relative">
+          <h2 className="text-[clamp(1.5rem,5vw,6rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn opacity-70" style={{ animationDelay: "900ms" }}>
+            <span>PROMPT EN</span>
+            <div className="mx-[0.03em] relative cursor-pointer group flex items-center justify-center">
+              <Zap className="w-[0.85em] h-[0.85em] text-purple-400 fill-purple-400/10 group-hover:text-purple-300 group-hover:fill-purple-300/20 transition-all duration-300 animate-pulse" />
+            </div>
+            <span>GINEER</span>
+          </h2>
         </div>
 
       </div>
