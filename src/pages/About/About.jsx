@@ -1,59 +1,119 @@
-import { useState } from "react";
-import Skills from "./Skills";
+import Skills from "./Skills"
+import { ArrowDownRight, Compass, ShieldAlert, Cpu } from "lucide-react"
 
 function About() {
+  const stats = [
+    { label: "ACADEMIC GPA", value: "9.2 / 10" },
+    { label: "PROJECTS BUILT", value: "20+" },
+    { label: "YEARS EXP.", value: "2+ Years" }
+  ];
 
-  const [flip, setFlip] = useState(false);
+  const pillars = [
+    {
+      icon: <Cpu className="w-5 h-5 text-sky-400" />,
+      title: "Clean Architecture",
+      desc: "Structuring clean, scalable React applications with reusable component structures."
+    },
+    {
+      icon: <Compass className="w-5 h-5 text-yellow-500" />,
+      title: "User-Centric Design",
+      desc: "Crafting modern layouts, micro-interactions, and animations that optimize user retention."
+    },
+    {
+      icon: <ShieldAlert className="w-5 h-5 text-rose-500" />,
+      title: "Robust Performance",
+      desc: "Optimizing code bundles, assets, and styling for lightning-fast responsiveness."
+    }
+  ];
 
   return (
-    <div className="my-[70px] mx-auto max-w-[1200px] p-[40px]" id="about">
+    <section id="about" className="relative py-24 md:py-32 border-b border-border/20 overflow-hidden">
+      <div className="max-w-[105rem] w-full mx-auto px-6 md:px-12">
+        
+        {/* Tagline & Headers */}
+        <div className="flex flex-col gap-4 mb-16 md:mb-24">
+          <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-primary uppercase">
+            WHAT I DO
+          </span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none max-w-4xl text-shiny">
+            Crafting responsive interfaces. Engineering robust full-stack applications.
+          </h2>
+        </div>
 
-      <div className="mb-[70px] text-[42px] text-[#777777] text-center relative after:content-[''] after:w-[120px] after:h-[3px] after:bg-[#777777] after:block after:mt-[15px] after:mx-auto after:rounded-[2px]">
-        <h2>About Me</h2>
-      </div>
+        {/* Narrative & Stats grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Narrative Column */}
+          <div className="lg:col-span-7 flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p>
+              Hi, I'm <strong className="text-foreground">Aswin Bino</strong>, a developer specializing in Frontend and Full-Stack Web Development. Currently pursuing Computer Science, I bridge the gap between technical design and robust software implementations.
+            </p>
+            <p>
+              My workflow focus lies in writing clean, reusable code, developing modular components in React, and integrating sleek styling with Tailwind CSS. I have worked on diverse systems ranging from complex web portals to lightweight databases.
+            </p>
+            <p>
+              Every project I undertake is designed with an emphasis on performance, accessibility, and smooth user interactions, ensuring a premium user experience across all devices.
+            </p>
+          </div>
 
-      <div className="flex items-center justify-center gap-[80px]">
-
-        <div
-          className="w-[320px] h-[420px] [perspective:1000px] cursor-pointer group"
-          onClick={() => setFlip(!flip)}
-        >
-
-          <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${flip ? "[transform:rotateY(180deg)]" : ""}`}>
-
-            {/* FRONT IMAGE */}
-
-            <div className="absolute w-full h-full [backface-visibility:hidden]">
-              <img src="img3.png" alt="" className="w-full h-full rounded-[12px] object-cover grayscale-[20%] transition-transform duration-400 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group-hover:scale-105" />
-            </div>
-
-            {/* BACK IMAGE */}
-
-            <div className="absolute w-full h-full [transform:rotateY(180deg)] [backface-visibility:hidden]">
-              <img src="img4.png" alt="" className="w-full h-full rounded-[12px] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.6)] group-hover:scale-105 transition-transform duration-400" />
-            </div>
-
+          {/* Stats Column */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 w-full">
+            {stats.map((stat, idx) => (
+              <div 
+                key={idx} 
+                className="p-6 border border-border/40 bg-muted/20 rounded-2xl flex flex-col justify-between h-36 hover:border-border transition-colors duration-300"
+              >
+                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                  {stat.label}
+                </span>
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-shiny">
+                  {stat.value}
+                </span>
+              </div>
+            ))}
           </div>
 
         </div>
 
-        <div className="max-w-[520px]">
-          <p className="text-[18px] leading-[1.9] text-[#333333] text-left">
-            Hi, I'm Aswin, a passionate Frontend Developer and Computer Science student.
-            I enjoy building modern, responsive, and interactive web interfaces that provide
-            a great user experience. I focus on clean design, smooth animations, and writing
-            efficient code using modern web technologies. I'm always learning new tools and
-            improving my skills to create better digital products. My goal is to combine
-            creativity with technology to build websites that are both beautiful and functional.
-          </p>
+        {/* Core Pillars / Capabilities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 md:mt-24">
+          {pillars.map((pillar, idx) => (
+            <div 
+              key={idx} 
+              className="p-8 border border-border/30 bg-muted/10 rounded-3xl flex flex-col gap-6 group hover:bg-muted/20 hover:border-border/60 transition-all duration-300"
+            >
+              <div className="w-12 h-12 rounded-full border border-border/60 bg-background flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                {pillar.icon}
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-foreground">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {pillar.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Skills / Scrolling Ribbon component */}
+        <div className="mt-24 md:mt-32">
+          <div className="flex justify-between items-end border-b border-border/20 pb-6 mb-12">
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-muted-foreground uppercase">
+              TECHNICAL MATRIX
+            </span>
+            <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-muted-foreground uppercase">
+              VERIFIED STACK
+            </span>
+          </div>
+          
+          <Skills />
         </div>
 
       </div>
-
-      <Skills />
-
-    </div>
-  );
+    </section>
+  )
 }
 
-export default About;
+export default About

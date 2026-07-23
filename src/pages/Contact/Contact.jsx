@@ -1,66 +1,163 @@
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { useState } from "react"
+import { Mail, Phone, MapPin, Send } from "lucide-react"
 
 function Contact() {
+  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    // Simulate API request
+    setTimeout(() => {
+      setStatus("sent");
+      setFormState({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus(""), 3000);
+    }, 1500);
+  };
+
+  const contactInfo = [
+    { 
+      icon: <Mail className="w-5 h-5 text-sky-400" />, 
+      label: "Email", 
+      value: "aswin.dev@email.com",
+      href: "mailto:aswin.dev@email.com"
+    },
+    { 
+      icon: <Phone className="w-5 h-5 text-yellow-500" />, 
+      label: "Phone", 
+      value: "+91 XX XX XX XX XX",
+      href: "tel:+91XXXXXXXXXX"
+    },
+    { 
+      icon: <MapPin className="w-5 h-5 text-rose-500" />, 
+      label: "Location", 
+      value: "Chennai, India",
+      href: "#"
+    }
+  ];
+
   return (
-    <div className="my-[100px] mx-auto max-w-[1200px] p-[40px]" id="contact">
-      <div className="text-center text-[40px] text-[#393838] mb-[60px] relative after:content-[''] after:w-[100px] after:h-[3px] after:bg-[#777777] after:block after:mx-auto after:mt-[15px]">
-        <h2>Contact Me</h2>
-      </div>
-
-      <div className="flex justify-between gap-[80px]">
-        {/* LEFT INFO */}
-        <div className="max-w-[400px]">
-          <h3 className="text-[28px] mb-[20px] text-[#202020]">Get In Touch</h3>
-          <p className="text-[#242424] mb-[30px]">
-            If you want to work together or have any question,
-            feel free to contact me.
-          </p>
-
-          <div className="flex items-center gap-[15px] mb-[20px] text-[16px] text-[#232222] group/item">
-            <FaEnvelope className="text-[22px] text-[#777777] animate-iconFloat transition-all duration-300 group-hover/item:scale-[1.3] group-hover/item:text-[#000]"/>
-            <span>aswin.dev@email.com</span>
-          </div>
-
-          <div className="flex items-center gap-[15px] mb-[20px] text-[16px] text-[#232222] group/item">
-            <FaPhone className="text-[22px] text-[#777777] animate-iconFloat transition-all duration-300 group-hover/item:scale-[1.3] group-hover/item:text-[#000]"/>
-            <span>+91 XX XX XX XX XX</span>
-          </div>
-
-          <div className="flex items-center gap-[15px] mb-[20px] text-[16px] text-[#232222] group/item">
-            <FaMapMarkerAlt className="text-[22px] text-[#777777] animate-iconFloat transition-all duration-300 group-hover/item:scale-[1.3] group-hover/item:text-[#000]"/>
-            <span>Chennai, India</span>
-          </div>
+    <section id="contact" className="relative py-24 md:py-32 border-b border-border/20 overflow-hidden">
+      <div className="max-w-[105rem] w-full mx-auto px-6 md:px-12">
+        
+        {/* Section Header */}
+        <div className="flex flex-col gap-4 mb-16 md:mb-24">
+          <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-primary uppercase">
+            LET'S TALK
+          </span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none max-w-4xl text-shiny">
+            Have an idea? Let's build something amazing together.
+          </h2>
         </div>
 
-        {/* RIGHT FORM */}
-        <form className="w-full max-w-[500px] flex flex-col gap-[20px]">
-          <input
-            type="text"
-            placeholder="Your Name"
-            required
-            className="p-[14px] rounded-[8px] border border-[#837d7d] bg-[#202020] text-white text-[16px] outline-none placeholder:text-[#aaa]"
-          />
+        {/* Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* Left Column: Info list */}
+          <div className="lg:col-span-5 flex flex-col gap-8">
+            <div className="flex flex-col gap-3">
+              <h3 className="text-2xl font-bold tracking-tight text-foreground">
+                Get In Touch
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+                I'm open to freelance projects, remote job offers, and collaborative web platforms. Fill out the form or reach out directly.
+              </p>
+            </div>
 
-          <input
-            type="email"
-            placeholder="Your Email"
-            required
-            className="p-[14px] rounded-[8px] border border-[#837d7d] bg-[#202020] text-white text-[16px] outline-none placeholder:text-[#aaa]"
-          />
+            <div className="flex flex-col gap-6">
+              {contactInfo.map((info, idx) => (
+                <div key={idx} className="flex items-center gap-4 group">
+                  <div className="w-11 h-11 rounded-full border border-border/60 bg-muted/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {info.icon}
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-bold tracking-wider text-muted-foreground uppercase">
+                      {info.label}
+                    </span>
+                    <a 
+                      href={info.href}
+                      className="text-sm font-semibold text-foreground hover:text-primary transition-colors mt-0.5"
+                    >
+                      {info.value}
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <textarea
-            placeholder="Your Message"
-            rows="6"
-            required
-            className="p-[14px] rounded-[8px] border border-[#837d7d] bg-[#202020] text-white text-[16px] outline-none placeholder:text-[#aaa]"
-          ></textarea>
+          {/* Right Column: Sleek Form */}
+          <form 
+            onSubmit={handleSubmit}
+            className="lg:col-span-7 w-full flex flex-col gap-6"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  value={formState.name}
+                  onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
+                  placeholder="John Doe"
+                  required
+                  className="w-full px-5 py-3.5 rounded-2xl border border-border/40 bg-muted/10 text-foreground text-sm font-medium outline-none placeholder:text-muted-foreground/40 focus:border-primary/80 focus:bg-muted/20 transition-all duration-300"
+                />
+              </div>
 
-          <button type="submit" className="p-[14px] border-none rounded-[8px] bg-[#777777] text-white text-[16px] cursor-pointer transition-all duration-300 hover:bg-[#444] hover:-translate-y-[3px]">
-            Send Message
-          </button>
-        </form>
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  value={formState.email}
+                  onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))}
+                  placeholder="john@example.com"
+                  required
+                  className="w-full px-5 py-3.5 rounded-2xl border border-border/40 bg-muted/10 text-foreground text-sm font-medium outline-none placeholder:text-muted-foreground/40 focus:border-primary/80 focus:bg-muted/20 transition-all duration-300"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                Your Message
+              </label>
+              <textarea
+                value={formState.message}
+                onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))}
+                placeholder="Tell me about your project..."
+                rows="6"
+                required
+                className="w-full px-5 py-3.5 rounded-2xl border border-border/40 bg-muted/10 text-foreground text-sm font-medium outline-none placeholder:text-muted-foreground/40 focus:border-primary/80 focus:bg-muted/20 transition-all duration-300 resize-none"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={status === "sending" || status === "sent"}
+              className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-foreground text-background font-bold tracking-wider text-xs uppercase hover:bg-foreground/80 transition-all duration-300 disabled:opacity-60 group/btn"
+            >
+              {status === "sending" ? (
+                "Sending Message..."
+              ) : status === "sent" ? (
+                "Message Sent!"
+              ) : (
+                <>
+                  Send Message 
+                  <Send size={12} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </>
+              )}
+            </button>
+          </form>
+
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 }
 
