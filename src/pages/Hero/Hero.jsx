@@ -121,13 +121,18 @@ export default function Hero() {
               </div>
             </div>
           </a>
-          <a href="#resume" className="group relative flex items-center justify-end ml-4">
+          <a 
+            href={`${import.meta.env.BASE_URL}AswinBino_Resume.pdf`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group relative flex items-center justify-end ml-4"
+          >
             <div className="relative flex items-center bg-foreground text-background h-12 w-12 group-hover:w-44 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden shadow-xl">
               <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-black uppercase tracking-widest pl-6 pr-12">
                 View Resume
               </span>
               <div className="absolute right-0 flex items-center justify-center w-12 h-12 group-hover:rotate-45 transition-transform duration-500">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
               </div>
             </div>
           </a>

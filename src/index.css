@@ -89,6 +89,79 @@
   animation-play-state: paused;
 }
 
+/* ========================================================= */
+/* TECHNICAL MATRIX - DUAL-DIRECTION CAROUSELS & FLOATING ANIMATIONS */
+/* ========================================================= */
+
+/* Edge Fading Mask Effect */
+.fade-mask {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  user-select: none;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Row 1 Left Scroll Animation */
+.track-left {
+  animation: scrollLeft 30s linear infinite;
+}
+
+/* Row 2 Right Scroll Animation */
+.track-right {
+  animation: scrollRight 30s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Individual Floating Badge Base Style */
+.badge-float {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  
+  /* Continuous smooth floating animation */
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+/* Offset animation timing for a wave effect */
+.badge-float:nth-child(2n) { animation-delay: 0.5s; }
+.badge-float:nth-child(3n) { animation-delay: 1s; }
+.badge-float:nth-child(4n) { animation-delay: 1.5s; }
+
+/* Premium Hover State */
+.badge-float:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  animation-play-state: paused; /* Locks position while interacting */
+}
+
+/* Floating Keyframes */
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

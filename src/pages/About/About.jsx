@@ -2,12 +2,6 @@ import Skills from "./Skills"
 import { ArrowDownRight, Compass, ShieldAlert, Cpu } from "lucide-react"
 
 function About() {
-  const stats = [
-    { label: "ACADEMIC GPA", value: "9.2 / 10" },
-    { label: "PROJECTS BUILT", value: "20+" },
-    { label: "YEARS EXP.", value: "2+ Years" }
-  ];
-
   const pillars = [
     {
       icon: <Cpu className="w-5 h-5 text-sky-400" />,
@@ -40,37 +34,104 @@ function About() {
           </h2>
         </div>
 
-        {/* Narrative & Stats grid */}
+        {/* Narrative & Technical Matrix Showcase Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Narrative Column */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>
-              Hi, I'm <strong className="text-foreground">Aswin Bino</strong>, a developer specializing in Frontend and Full-Stack Web Development. Currently pursuing Computer Science, I bridge the gap between technical design and robust software implementations.
+              Hi, I'm <strong className="text-foreground">Aswin Bino</strong>, a developer specializing in Full-Stack Web Development and AI Solutions. Currently pursuing B.Tech in AI & Data Science, I bridge the gap between intelligent backends and polished frontends.
             </p>
             <p>
-              My workflow focus lies in writing clean, reusable code, developing modular components in React, and integrating sleek styling with Tailwind CSS. I have worked on diverse systems ranging from complex web portals to lightweight databases.
+              Gained real production experience through an industry internship and independently shipped multiple projects solving real problems — ranging from full-stack React platforms to LLM prompt applications and real-time Socket.io backends.
             </p>
             <p>
-              Every project I undertake is designed with an emphasis on performance, accessibility, and smooth user interactions, ensuring a premium user experience across all devices.
+              Every project I undertake is designed with an emphasis on performance, scalable code architecture, and smooth user interactions across all devices.
             </p>
           </div>
 
-          {/* Stats Column */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4 w-full">
-            {stats.map((stat, idx) => (
-              <div 
-                key={idx} 
-                className="p-6 border border-border/40 bg-muted/20 rounded-2xl flex flex-col justify-between h-36 hover:border-border transition-colors duration-300"
-              >
-                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">
-                  {stat.label}
-                </span>
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-shiny">
-                  {stat.value}
+          {/* Technical Matrix Column */}
+          <div className="lg:col-span-5 w-full">
+            <div className="p-8 border border-border/50 bg-gradient-to-br from-muted/30 via-background to-muted/20 rounded-3xl flex flex-col gap-6 relative overflow-hidden shadow-2xl group hover:border-primary/50 transition-all duration-500">
+              {/* Glowing background animation light */}
+              <div className="absolute -right-16 -top-16 w-48 h-48 bg-sky-500/15 rounded-full blur-3xl group-hover:bg-purple-500/25 transition-all duration-700 animate-pulse"></div>
+              
+              {/* Moving scanning beam line */}
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent animate-pulse opacity-70"></div>
+
+              <div className="flex items-center justify-between border-b border-border/30 pb-4 relative z-10">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground">
+                    TECHNICAL MATRIX
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono font-bold text-sky-400 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">
+                  AI & DS (2027)
                 </span>
               </div>
-            ))}
+
+              {/* Moving Ticker Marquee inside Matrix */}
+              <div className="w-full overflow-hidden bg-background/60 border border-border/40 rounded-xl py-2 relative z-10 fade-mask">
+                <div className="marquee-track track-left flex items-center gap-6 text-[10px] font-mono font-bold tracking-wider text-muted-foreground/90">
+                  <span className="text-sky-400">❖ REACT.JS</span>
+                  <span className="text-foreground">❖ TAILWIND CSS</span>
+                  <span className="text-emerald-400">❖ NODE.JS</span>
+                  <span className="text-emerald-300">❖ EXPRESS</span>
+                  <span className="text-amber-400">❖ FASTAPI</span>
+                  <span className="text-purple-400">❖ OPENAI LLM</span>
+                  <span className="text-foreground">❖ MONGODB</span>
+                  <span className="text-sky-300">❖ REST APIS</span>
+                  <span className="text-rose-400">❖ SOCKET.IO</span>
+                  {/* Duplicated for smooth loop */}
+                  <span className="text-sky-400">❖ REACT.JS</span>
+                  <span className="text-foreground">❖ TAILWIND CSS</span>
+                  <span className="text-emerald-400">❖ NODE.JS</span>
+                  <span className="text-emerald-300">❖ EXPRESS</span>
+                  <span className="text-amber-400">❖ FASTAPI</span>
+                  <span className="text-purple-400">❖ OPENAI LLM</span>
+                  <span className="text-foreground">❖ MONGODB</span>
+                  <span className="text-sky-300">❖ REST APIS</span>
+                  <span className="text-rose-400">❖ SOCKET.IO</span>
+                </div>
+              </div>
+
+              {/* Animated Matrix Core Grid with Floating Badges */}
+              <div className="grid grid-cols-2 gap-3.5 relative z-10">
+                <div className="badge-float p-4 border border-border/40 bg-background/70 backdrop-blur-sm rounded-2xl flex flex-col gap-1 hover:border-sky-400/60 hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-sky-500/10">
+                  <span className="text-[9px] font-bold tracking-widest text-muted-foreground uppercase flex items-center justify-between w-full">
+                    Frontend <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                  </span>
+                  <span className="text-sm font-bold text-foreground">React & Tailwind</span>
+                </div>
+                <div className="badge-float p-4 border border-border/40 bg-background/70 backdrop-blur-sm rounded-2xl flex flex-col gap-1 hover:border-emerald-400/60 hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-emerald-500/10">
+                  <span className="text-[9px] font-bold tracking-widest text-muted-foreground uppercase flex items-center justify-between w-full">
+                    Backend <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </span>
+                  <span className="text-sm font-bold text-foreground">Node / FastAPI</span>
+                </div>
+                <div className="badge-float p-4 border border-border/40 bg-background/70 backdrop-blur-sm rounded-2xl flex flex-col gap-1 hover:border-purple-400/60 hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-purple-500/10">
+                  <span className="text-[9px] font-bold tracking-widest text-muted-foreground uppercase flex items-center justify-between w-full">
+                    AI / ML <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+                  </span>
+                  <span className="text-sm font-bold text-purple-400">Prompt Eng.</span>
+                </div>
+                <div className="badge-float p-4 border border-border/40 bg-background/70 backdrop-blur-sm rounded-2xl flex flex-col gap-1 hover:border-amber-400/60 hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-amber-500/10">
+                  <span className="text-[9px] font-bold tracking-widest text-muted-foreground uppercase flex items-center justify-between w-full">
+                    Databases <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                  </span>
+                  <span className="text-sm font-bold text-foreground">MongoDB / SQL</span>
+                </div>
+              </div>
+
+              {/* Status footer */}
+              <div className="flex items-center justify-between pt-2 border-t border-border/30 text-xs text-muted-foreground font-mono relative z-10">
+                <span className="flex items-center gap-1.5">
+                  STATUS: <span className="text-emerald-400 font-bold">READY TO SHIP</span>
+                </span>
+                <span className="text-sky-400 font-bold">4+ SHIPPED APPS</span>
+              </div>
+            </div>
           </div>
 
         </div>

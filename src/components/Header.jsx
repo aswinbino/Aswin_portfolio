@@ -23,7 +23,7 @@ function Header({ theme, toggleTheme }) {
     { name: "About", href: "#about" },
     { name: "Projects", href: "#project" },
     { name: "Services", href: "#services" },
-    { name: "Resume", href: "#resume" },
+    { name: "Resume", href: `${import.meta.env.BASE_URL}AswinBino_Resume.pdf`, target: "_blank" },
   ]
 
   const socialLinks = [
@@ -55,6 +55,8 @@ function Header({ theme, toggleTheme }) {
               <li key={item.name}>
                 <a 
                   href={item.href} 
+                  target={item.target || undefined}
+                  rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all hover:after:w-full"
                 >
                   {item.name}
@@ -113,6 +115,8 @@ function Header({ theme, toggleTheme }) {
             <li key={item.name}>
               <a 
                 href={item.href}
+                target={item.target || undefined}
+                rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-3xl font-black tracking-tight text-muted-foreground hover:text-foreground transition-colors"
               >

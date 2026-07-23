@@ -6,7 +6,7 @@ import Project from "./pages/Project/Project"
 import Services from "./pages/Services/Services"
 import Contact from "./pages/Contact/Contact"
 import Footer from "./pages/Footer/Footer"
-import Resume from "./pages/Resume/Resume"
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(() => {
@@ -107,7 +107,6 @@ function App() {
           <Services />
           <Contact />
         </main>
-        <Resume />
         <Footer />
       </div>
     </div>
