@@ -5,34 +5,60 @@ function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
-    // Simulate API request
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/aswinbino1234@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          _subject: `New Portfolio Message from ${formState.name}`,
+          _captcha: "false",
+          _template: "table"
+        })
+      });
+
+      if (response.ok) {
+        setStatus("sent");
+        setFormState({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus(""), 5000);
+      } else {
+        throw new Error("FormSubmit failed");
+      }
+    } catch (error) {
+      // Fallback: Open mailto client pre-populated with subject and body
+      window.location.href = `mailto:aswinbino1234@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent("Name: " + formState.name + "\nEmail: " + formState.email + "\n\nMessage:\n" + formState.message)}`;
       setStatus("sent");
       setFormState({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus(""), 3000);
-    }, 1500);
+      setTimeout(() => setStatus(""), 5000);
+    }
   };
 
   const contactInfo = [
-    {
-      icon: <Mail className="w-5 h-5 text-sky-400" />,
-      label: "Email",
+    { 
+      icon: <Mail className="w-5 h-5 text-sky-400" />, 
+      label: "Email", 
       value: "aswinbino1234@gmail.com",
-      href: "mailto:aswin.dev@email.com"
+      href: "mailto:aswinbino1234@gmail.com"
     },
-    {
-      icon: <Phone className="w-5 h-5 text-yellow-500" />,
-      label: "Phone",
+    { 
+      icon: <Phone className="w-5 h-5 text-yellow-500" />, 
+      label: "Phone", 
       value: "+91 9843540186",
-      href: "tel:+91XXXXXXXXX"
+      href: "tel:+919843540186"
     },
-    {
-      icon: <MapPin className="w-5 h-5 text-rose-500" />,
-      label: "Location",
-      value: "Chennai, India",
+    { 
+      icon: <MapPin className="w-5 h-5 text-rose-500" />, 
+      label: "Location", 
+      value: "Kerala, India",
       href: "#"
     }
   ];
