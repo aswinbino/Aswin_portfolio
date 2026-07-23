@@ -8,28 +8,6 @@ A modern and elegant personal portfolio website built to present my projects, sk
 
 You can view the live website here: [Live Demo](https://aswinbino.github.io/Aswin_portfolio_/)
 
----
-
-## 🌟 Website Sections
-
-- **Home**: Developer introduction with avatar and short description  
-- **About**: Experience, tech stack, personal insights, and skill cards  
-- **Projects**: Showcase of projects with images, descriptions, and skills  
-- **Services**: Highlighting services offered with interactive cards  
-- **Contact**: Contact form and social links with interactive hover effects  
-
----
-
-## ⚡ Features
-
-- Clean & modern UI design
-- Smooth animations and transitions
-- Fully responsive (Desktop / Tablet / Mobile)
-- Interactive sections & hover effects
-- Clean and organized code structure
-- Fast performance & lightweight 
-
----
 
 ## 🛠 Technologies Used
 
@@ -58,7 +36,7 @@ This project is licensed under the terms described in the [LICENSE](LICENSE) fil
 
 ## 📬 Contact
 
-- Email: aswin.dev@email.com   
+- Email: aswinbino1234@gmail.com   
 - Location: Chennai, India
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/aswin)
 - GitHub: [GitHub](https://github.com/aswinbino/Aswin_portfolio_)
