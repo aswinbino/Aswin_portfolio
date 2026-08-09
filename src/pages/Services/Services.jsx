@@ -1,131 +1,106 @@
-import { Code2, Laptop, Bot, Check, Sparkles, Zap, BarChart3 } from "lucide-react"
+import { Bot, Cpu, Lightbulb, Check, Sparkles } from "lucide-react"
 
-function Services() {
-  const serviceList = [
+export default function Services() {
+  const features = [
     {
-      index: "01",
-      icon: <Code2 className="w-6 h-6 text-sky-400" />,
-      title: "Frontend Development",
-      desc: "Building responsive, high-performance web interfaces using React.js, Tailwind CSS, JavaScript (ES6+), and modern component architectures.",
-      bullets: [
-        "React.js & Vite SPAs",
-        "Tailwind CSS & Dynamic Animations",
-        "State Management & Component Architecture",
-        "Responsive & Interactive UI"
-      ]
-    },
-    {
-      index: "02",
-      icon: <Laptop className="w-6 h-6 text-emerald-400" />,
-      title: "Full-Stack & Backend Engineering",
-      desc: "Developing robust server-side APIs, database models, and backend controllers using Node.js, Express, FastAPI, and MongoDB.",
-      bullets: [
-        "Node.js, Express & FastAPI Backends",
-        "MongoDB & SQL Database Schemas",
-        "REST API Architecture & Routing",
-        "CRUD Operations & Authentication"
-      ]
-    },
-    {
-      index: "03",
-      icon: <Bot className="w-6 h-6 text-purple-400" />,
-      title: "AI & Prompt Engineering",
-      desc: "Engineering intelligent AI applications, optimizing LLM prompts, and integrating OpenAI APIs for automated generative workflows.",
-      bullets: [
-        "Generative AI & LLM Integration",
-        "Prompt Engineering & Workflow Tuning",
-        "Streamlit & Python AI Connectors",
-        "Certifications (Upcoming)"
+      index: "FEATURE — 01",
+      icon: <Bot className="w-6 h-6 text-sky-400" />,
+      title: "INTELLIGENCE SYSTEMS",
+      desc: "Specializing in architecting autonomous systems and intelligence-driven platforms. From fine-tuning LLMs and engineering RAG architectures to developing deep learning models for Computer Vision and NLP.",
+      tags: [
+        "LLM FINE-TUNING",
+        "RAG SYSTEMS",
+        "DEEP LEARNING",
+        "COMPUTER VISION",
+        "MLOPS",
+        "DATA ANALYTICS"
       ],
-      badge: "Certificate (Coming Soon)"
+      color: "border-sky-500/30 hover:border-sky-500/60"
     },
     {
-      index: "04",
-      icon: <Zap className="w-6 h-6 text-amber-400" />,
-      title: "Real-Time Web Applications",
-      desc: "Architecting low-latency, bidirectional real-time communications using Socket.io and WebSockets for live chat and event streams.",
-      bullets: [
-        "Socket.io Real-time Messaging",
-        "Bidirectional Data Streaming",
-        "Live Status & Event Pipes",
-        "Event-Driven Client-Server Logic"
-      ]
+      index: "FEATURE — 02",
+      icon: <Cpu className="w-6 h-6 text-emerald-400" />,
+      title: "SCALABLE SYSTEMS",
+      desc: "Building the foundation for resilient digital ecosystems. I engineer full-stack solutions with a focus on system architecture, modular design, and high-performance backends using React, Node.js, and Python.",
+      tags: [
+        "SYSTEM ARCHITECTURE",
+        "FULL-STACK DEV",
+        "DOCKER & K8S",
+        "API DESIGN",
+        "DEVOPS",
+        "SOFTWARE DESIGN"
+      ],
+      color: "border-emerald-500/30 hover:border-emerald-500/60"
     },
     {
-      index: "05",
-      icon: <BarChart3 className="w-6 h-6 text-rose-400" />,
-      title: "Data Visualization & Dashboards",
-      desc: "Building interactive data visualization dashboards connecting Python backends with dynamic charting components.",
-      bullets: [
-        "Python Flask Data Backends",
-        "D3.js & Interactive Charts",
-        "Analytical Reporting Views",
-        "Custom Metrics & Data Insights"
-      ]
+      index: "FEATURE — 03",
+      icon: <Lightbulb className="w-6 h-6 text-amber-400" />,
+      title: "STRATEGIC INNOVATION",
+      desc: "Translating complex technical requirements into impactful business solutions through systemic thinking, strategic leadership, and clear communication within cross-functional engineering teams.",
+      tags: [
+        "SYSTEMIC THINKING",
+        "LEADERSHIP",
+        "PROBLEM SOLVING",
+        "TEAMWORK",
+        "COMMUNICATION",
+        "RESEARCH"
+      ],
+      color: "border-amber-500/30 hover:border-amber-500/60"
     }
   ];
 
   return (
-    <section id="services" className="relative py-24 md:py-32 border-b border-border/20 overflow-hidden">
+    <section id="services" className="relative py-24 md:py-32 border-b border-border/20 overflow-hidden select-none">
       <div className="max-w-[105rem] w-full mx-auto px-6 md:px-12">
         
-        {/* Section Header */}
-        <div className="flex flex-col gap-4 mb-16 md:mb-24">
-          <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-primary uppercase">
-            SERVICES
+        {/* Header */}
+        <div className="flex flex-col gap-4 mb-16">
+          <span className="text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] text-primary uppercase">
+            SPECIALIZATIONS
           </span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none max-w-4xl text-shiny">
-            Core capabilities & specialized services.
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-shiny max-w-4xl">
+            Core Capabilities & Engineering Disciplines.
           </h2>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {serviceList.map((service, idx) => (
-            <div 
+        {/* 3 Large Feature Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((item, idx) => (
+            <div
               key={idx}
-              className="p-8 md:p-10 border border-border/40 bg-muted/20 hover:bg-muted/30 dark:bg-muted/10 dark:hover:bg-muted/20 hover:border-border/80 transition-all duration-500 rounded-[2rem] flex flex-col justify-between gap-8 group relative overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1"
+              className={`p-8 md:p-10 rounded-[2.5rem] border bg-muted/10 hover:bg-muted/20 transition-all duration-500 flex flex-col justify-between gap-8 group shadow-xl hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden ${item.color}`}
             >
               <div className="flex flex-col gap-6">
-                {/* Header Icon + Index */}
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-full border border-border/60 bg-background flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
+                  <div className="p-3 rounded-2xl bg-background border border-border/40 group-hover:scale-110 transition-transform">
+                    {item.icon}
                   </div>
-                  <div className="flex items-center gap-2">
-                    {service.badge && (
-                      <span className="text-[9px] font-bold text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2.5 py-1 rounded-full flex items-center gap-1">
-                        <Sparkles className="w-3 h-3 animate-spin" style={{ animationDuration: '4s' }} />
-                        {service.badge}
-                      </span>
-                    )}
-                    <span className="text-xs font-mono font-bold tracking-widest text-muted-foreground/60 select-none">
-                      {service.index}
-                    </span>
-                  </div>
+                  <span className="text-xs font-mono font-bold tracking-widest text-muted-foreground">
+                    {item.index}
+                  </span>
                 </div>
 
-                {/* Title & Description */}
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
-                    {service.title}
+                  <h3 className="text-2xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors">
+                    {item.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {service.desc}
+                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                    {item.desc}
                   </p>
                 </div>
               </div>
 
-              {/* Deliverable Bullets */}
-              <div className="flex flex-col gap-3.5 border-t border-border/30 pt-6">
-                {service.bullets.map((bullet, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs font-medium text-foreground/80">
-                    <Check className="w-3.5 h-3.5 text-primary shrink-0" />
-                    <span>{bullet}</span>
-                  </div>
+              {/* Tags Grid */}
+              <div className="flex flex-wrap gap-2 border-t border-border/30 pt-6">
+                {item.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="text-[9px] font-mono font-bold tracking-wider px-3 py-1.5 rounded-full bg-background border border-border/40 text-foreground/80 hover:border-primary/50 transition-colors"
+                  >
+                    {tag}
+                  </span>
                 ))}
               </div>
-
             </div>
           ))}
         </div>
@@ -134,5 +109,3 @@ function Services() {
     </section>
   );
 }
-
-export default Services;

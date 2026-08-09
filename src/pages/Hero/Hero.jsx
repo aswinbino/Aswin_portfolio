@@ -3,25 +3,18 @@ import { Zap, Bot, ArrowDownRight } from "lucide-react"
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa"
 
 export default function Hero() {
-  const [currentTime, setCurrentTime] = useState("")
+  const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
-    // Optional: dynamic time indicator
     const updateTime = () => {
       const options = { timeZone: "Asia/Kolkata", hour12: false, hour: '2-digit', minute: '2-digit' };
       const timeStr = new Intl.DateTimeFormat("en-US", options).format(new Date());
       setCurrentTime(timeStr);
-    }
+    };
     updateTime();
     const interval = setInterval(updateTime, 60000);
     return () => clearInterval(interval);
   }, []);
-
-  const socialLinks = [
-    { icon: <FaGithub size={22} />, href: "https://github.com/aswinbino/Aswin_portfolio", label: "GitHub" },
-    { icon: <FaLinkedin size={22} />, href: "#", label: "LinkedIn" },
-    { icon: <FaInstagram size={22} />, href: "#", label: "Instagram" }
-  ]
 
   return (
     <section 
@@ -45,12 +38,19 @@ export default function Hero() {
               </a>
             </div>
             <h1 className="text-[clamp(2.5rem,10vw,11rem)] font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "300ms" }}>
-              FULL STACK / SOFTWARE
+              FULL STACK /
             </h1>
           </div>
         </div>
 
-        {/* Line 2: Huge Text (DEVELOPER) + Inline Zap Icon */}
+        {/* Line 2: SOFTWARE */}
+        <div className="flex flex-row items-center justify-start md:justify-end gap-4 relative">
+          <h1 className="text-[clamp(2.5rem,10vw,11rem)] font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "400ms" }}>
+            SOFTWARE
+          </h1>
+        </div>
+
+        {/* Line 3: DEVELOPER with Zap Icon */}
         <div className="flex flex-row items-center justify-start md:justify-end gap-4 relative">
           <div className="relative">
             {/* Instagram floating icon */}
@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Line 3: Huge Text (ENGINEER) + Inline Bot Icon + Subtext Right */}
+        {/* Line 4: ENGINEER with Bot Icon + Subtext Right */}
         <div className="flex flex-col md:flex-row md:items-start justify-start md:justify-end gap-6 relative">
           <h1 className="text-[clamp(2.5rem,10vw,11rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "700ms" }}>
             <span>EN</span>
@@ -85,7 +85,7 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Line 4: PROMPT ENGINEER */}
+        {/* Line 5: PROMPT ENGINEER */}
         <div className="flex flex-row items-center justify-start md:justify-end gap-4 relative">
           <h2 className="text-[clamp(1.5rem,5vw,6rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn opacity-70" style={{ animationDelay: "900ms" }}>
             <span>PROMPT EN</span>
@@ -107,35 +107,38 @@ export default function Hero() {
             KERALA, IN — {currentTime ? `${currentTime} IST` : "2026"}
           </div>
 
-          {/* Expanding Resume Circle Button */}
-          <a 
-            href="#contact" 
-            className="group relative flex items-center justify-end"
-          >
-            <div className="relative flex items-center bg-foreground text-background h-12 w-12 group-hover:w-44 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden shadow-xl">
-              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-black uppercase tracking-widest pl-6 pr-12">
-                Let's Talk
-              </span>
-              <div className="absolute right-0 flex items-center justify-center w-12 h-12 group-hover:rotate-45 transition-transform duration-500">
-                <ArrowDownRight className="w-5 h-5 text-background" />
+          {/* Magnetic Action Buttons */}
+          <div className="flex items-center gap-4">
+            <a 
+              href="#contact" 
+              className="group relative flex items-center justify-end"
+            >
+              <div className="relative flex items-center bg-foreground text-background h-12 w-12 group-hover:w-44 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden shadow-xl">
+                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-black uppercase tracking-widest pl-6 pr-12">
+                  Let's Talk
+                </span>
+                <div className="absolute right-0 flex items-center justify-center w-12 h-12 group-hover:rotate-45 transition-transform duration-500">
+                  <ArrowDownRight className="w-5 h-5 text-background" />
+                </div>
               </div>
-            </div>
-          </a>
-          <a 
-            href={`${import.meta.env.BASE_URL}AswinBino_Resume.pdf`} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="group relative flex items-center justify-end ml-4"
-          >
-            <div className="relative flex items-center bg-foreground text-background h-12 w-12 group-hover:w-44 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden shadow-xl">
-              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-black uppercase tracking-widest pl-6 pr-12">
-                View Resume
-              </span>
-              <div className="absolute right-0 flex items-center justify-center w-12 h-12 group-hover:rotate-45 transition-transform duration-500">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
+            </a>
+            <a 
+              href={`${import.meta.env.BASE_URL}AswinBino_Resume.pdf`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="group relative flex items-center justify-end"
+            >
+              <div className="relative flex items-center border border-border/80 bg-muted/20 text-foreground h-12 w-12 group-hover:w-44 rounded-full transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden shadow-xl">
+                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[10px] font-black uppercase tracking-widest pl-6 pr-12">
+                  View Resume
+                </span>
+                <div className="absolute right-0 flex items-center justify-center w-12 h-12 group-hover:translate-x-1 transition-transform duration-500">
+                  <span className="text-sm">📄</span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
+
         </div>
       </div>
 

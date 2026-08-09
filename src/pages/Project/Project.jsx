@@ -1,195 +1,338 @@
 import { useState } from "react";
+import { ExternalLink, Sparkles, Search, Grid, List, ArrowUpRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
 import img1 from "../../assets/images/Cleveroad.jpg";
 import img2 from "../../assets/images/Capture d'écran 2025-10-22 182207.png";
 import img3 from "../../assets/images/Weather Forecast Dashboard.jpg";
 import img4 from "../../assets/images/WordPress dashboard design concept.jpg";
 import img5 from "../../assets/images/Game Dashboard Design.jpg";
 import img6 from "../../assets/images/Task manager app.jpg";
-import { ExternalLink, Sparkles } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
 
-const projects = [
+const projectsData = [
   {
-    id: 1,
-    title: "AI Prompt Generator",
-    category: "AI & ML",
+    id: "01",
+    title: "Browser Automation Agent",
+    realm: "Artificial Intelligence",
+    status: "DONE",
+    desc: "A command-line interface (CLI) and web engine tool for AI-driven browser automation and workflow execution.",
+    tech: ["Python 3.11", "browser-use", "Groq", "Playwright", "LLM"],
     img: img4,
-    desc: "Streamlit web application integrated with OpenAI API for intelligent prompt creation, template generation, and LLM tuning.",
-    skills: ["Python", "Streamlit", "OpenAI API", "Generative AI"],
     github: "https://github.com/aswinbino/Aswin_portfolio",
-    live: "#",
-    featured: true
+    live: "#"
   },
   {
-    id: 2,
-    title: "Portfolio Website",
-    category: "Full-Stack",
-    img: img2,
-    desc: "Full-stack developer portfolio designed with React + Vite + Tailwind, featuring modern dark mode, micro-interactions, and Vercel deployment.",
-    skills: ["React.js", "Tailwind CSS", "Vite", "JavaScript"],
-    github: "https://github.com/aswinbino/Aswin_portfolio",
-    live: "#",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "Real-Time Chat Application",
-    category: "Real-Time",
-    img: img6,
-    desc: "Bidirectional real-time chat platform supporting multi-room messaging, active user presence, and low-latency Socket.io piping.",
-    skills: ["React.js", "Socket.io", "Node.js", "Express"],
-    github: "https://github.com/aswinbino/Aswin_portfolio",
-    live: "#",
-    featured: true
-  },
-  {
-    id: 4,
-    title: "Data Visualization Dashboard",
-    category: "Data & Analytics",
+    id: "02",
+    title: "Swarm AI Blog Writer",
+    realm: "Artificial Intelligence",
+    status: "DONE",
+    desc: "Intelligent multi-agent system built with Vue 3 / React integrating multiple LLMs for automated research-backed content generation.",
+    tech: ["Python", "OpenAI API", "Multi-Agent", "FastAPI"],
     img: img5,
-    desc: "Analytical dashboard featuring dynamic chart renders, metric filtering, and data aggregation via Python Flask backend.",
-    skills: ["Python", "Flask", "D3.js", "REST API"],
     github: "https://github.com/aswinbino/Aswin_portfolio",
     live: "#"
   },
   {
-    id: 5,
-    title: "E-Commerce Storefront",
-    category: "Frontend",
+    id: "03",
+    title: "Creative Developer Portfolio",
+    realm: "Software Architecture",
+    status: "DONE",
+    desc: "Modern full-stack portfolio website built with React 19 + Vite + Tailwind, featuring micro-interactions and dark aesthetics.",
+    tech: ["React.js", "Tailwind CSS", "Vite", "JavaScript"],
+    img: img2,
+    github: "https://github.com/aswinbino/Aswin_portfolio",
+    live: "#"
+  },
+  {
+    id: "04",
+    title: "SNBTin - Exam Prep Platform",
+    realm: "Full-Stack",
+    status: "DONE",
+    desc: "Educational platform with 6 modular learning units for test preparation, featuring quiz metrics and real-time scores.",
+    tech: ["React.js", "Node.js", "Express", "MongoDB"],
     img: img1,
-    desc: "Modern online store UI with interactive product filtering, cart state management, and unified checkout screens.",
-    skills: ["JavaScript", "HTML5", "CSS3", "Tailwind"],
     github: "https://github.com/aswinbino/Aswin_portfolio",
     live: "#"
   },
   {
-    id: 6,
-    title: "Weather Forecast Portal",
-    category: "Frontend",
+    id: "05",
+    title: "Terraflow Real-Time Platform",
+    realm: "Software Architecture",
+    status: "IN PROGRESS",
+    desc: "Real-time telemetry integrated with satellite data and sensor pipelines for automated risk scoring.",
+    tech: ["Python", "FastAPI", "WebSockets", "Docker"],
     img: img3,
-    desc: "Responsive weather portal fetching real-time meteorological metrics, forecasts, and interactive weather maps.",
-    skills: ["JavaScript", "REST API", "HTML5", "CSS3"],
+    github: "https://github.com/aswinbino/Aswin_portfolio",
+    live: "#"
+  },
+  {
+    id: "06",
+    title: "DocsInsight RAG Engine",
+    realm: "Artificial Intelligence",
+    status: "DONE",
+    desc: "Enterprise Retrieval-Augmented Generation system for intelligent document analysis and vector search.",
+    tech: ["Python", "LangChain", "Vector DB", "Streamlit"],
+    img: img6,
     github: "https://github.com/aswinbino/Aswin_portfolio",
     live: "#"
   }
 ];
 
 export default function Project() {
-  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [activeRealm, setActiveRealm] = useState("All Realms");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("All");
+  const [viewMode, setViewMode] = useState("list"); // 'list' | 'grid'
+  const [hoveredProject, setHoveredProject] = useState(null);
 
-  const categories = ["ALL", "AI & ML", "Full-Stack", "Real-Time", "Data & Analytics", "Frontend"];
+  const realms = ["All Realms", "Artificial Intelligence", "Software Architecture", "Full-Stack"];
 
-  const filteredProjects = activeCategory === "ALL" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const filteredProjects = projectsData.filter((p) => {
+    const matchesRealm = activeRealm === "All Realms" || p.realm === activeRealm;
+    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.desc.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = statusFilter === "All" || (statusFilter === "Done" && p.status === "DONE") || (statusFilter === "In Progress" && p.status === "IN PROGRESS");
+    return matchesRealm && matchesSearch && matchesStatus;
+  });
 
   return (
-    <section id="project" className="relative py-24 md:py-32 border-b border-border/20 overflow-hidden">
+    <section id="project" className="relative py-24 md:py-32 border-b border-border/20 overflow-hidden select-none">
       <div className="max-w-[105rem] w-full mx-auto px-6 md:px-12">
         
-        {/* Header tags */}
-        <div className="flex flex-col gap-4 mb-12 md:mb-16">
-          <span className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-primary uppercase">
-            PORTFOLIO
+        {/* Header Tag */}
+        <div className="flex flex-col gap-4 mb-12">
+          <span className="text-[10px] md:text-xs font-mono font-bold tracking-[0.3em] text-primary uppercase">
+            PROJECT IMPACT
           </span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none max-w-4xl text-shiny">
-            Featured projects & software systems.
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-shiny">
+            Building The Future
           </h2>
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl">
+            Transforming ideas into production-ready solutions that drive real-world impact.
+          </p>
         </div>
 
-        {/* Animated Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-3 mb-12 md:mb-16">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-300 select-none ${
-                activeCategory === cat
-                  ? "bg-foreground text-background shadow-lg scale-105"
-                  : "bg-muted/30 text-muted-foreground hover:bg-muted/60 border border-border/40 hover:text-foreground"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Impact Counter Banner */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-muted/20 border border-border/40 mb-16 backdrop-blur-xl">
+          <div className="flex flex-col">
+            <span className="text-3xl md:text-4xl font-black text-foreground">21+</span>
+            <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">PROJECTS BUILT</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-3xl md:text-4xl font-black text-foreground">2+</span>
+            <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">YEARS EXPERIENCE</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-3xl md:text-4xl font-black text-foreground">34+</span>
+            <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">TECH STACK</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-3xl md:text-4xl font-black text-foreground">12+</span>
+            <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">ACTIVE DEPLOYMENTS</span>
+          </div>
         </div>
 
-        {/* Project Cards Grid with Hover & Transition Animations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <div 
-              key={project.id}
-              className="flex flex-col border border-border/40 bg-muted/20 hover:bg-muted/30 dark:bg-muted/10 dark:hover:bg-muted/20 hover:border-primary/50 transition-all duration-500 rounded-[2rem] overflow-hidden group shadow-lg hover:shadow-2xl hover:-translate-y-2"
-            >
-              {/* Card Image + Overlay Badges */}
-              <div className="relative overflow-hidden aspect-[16/10] border-b border-border/20 bg-background/50">
-                <img 
-                  src={project.img} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+        {/* Projects Archive Header & Filters */}
+        <div className="flex flex-col gap-6 mb-12">
+          <div className="flex justify-between items-center border-b border-border/30 pb-4">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+              <h3 className="text-xl font-bold tracking-tight text-foreground font-mono">
+                PROJECTS ARCHIVE <span className="text-muted-foreground text-sm">[{filteredProjects.length}]</span>
+              </h3>
+            </div>
+
+            {/* View Mode Switcher */}
+            <div className="flex items-center gap-1 bg-muted/40 p-1 rounded-xl border border-border/40">
+              <button
+                onClick={() => setViewMode("list")}
+                className={`p-2 rounded-lg text-xs font-bold transition-all ${
+                  viewMode === "list" ? "bg-foreground text-background shadow-md" : "text-muted-foreground hover:text-foreground"
+                }`}
+                title="List View"
+              >
+                <List size={16} />
+              </button>
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`p-2 rounded-lg text-xs font-bold transition-all ${
+                  viewMode === "grid" ? "bg-foreground text-background shadow-md" : "text-muted-foreground hover:text-foreground"
+                }`}
+                title="Grid View"
+              >
+                <Grid size={16} />
+              </button>
+            </div>
+          </div>
+
+          {/* Filter Bar: Realm Pills, Search, Status Pills */}
+          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-4">
+            
+            {/* Realm Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {realms.map((realm) => (
+                <button
+                  key={realm}
+                  onClick={() => setActiveRealm(realm)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all ${
+                    activeRealm === realm
+                      ? "bg-foreground text-background shadow-md"
+                      : "bg-muted/30 text-muted-foreground hover:bg-muted/60 border border-border/40 hover:text-foreground"
+                  }`}
+                >
+                  {realm}
+                </button>
+              ))}
+            </div>
+
+            {/* Search & Status Filter */}
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Search input */}
+              <div className="relative flex-1 min-w-[200px]">
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search projects..."
+                  className="w-full pl-10 pr-4 py-2 rounded-full border border-border/40 bg-muted/20 text-xs font-medium text-foreground outline-none focus:border-primary/80 transition-all"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                {/* Category Badge Overlay */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="text-[9px] font-mono font-bold tracking-widest text-foreground bg-background/80 backdrop-blur-md px-3 py-1 rounded-full border border-border/60 shadow-md">
-                    {project.category}
-                  </span>
-                </div>
-
-                {project.featured && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="text-[9px] font-bold tracking-widest text-purple-400 bg-purple-500/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-purple-500/30 flex items-center gap-1">
-                      <Sparkles className="w-3 h-3" /> FEATURED
-                    </span>
-                  </div>
-                )}
               </div>
 
-              {/* Card Content */}
-              <div className="flex-1 p-8 flex flex-col justify-between gap-6">
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {project.desc}
-                  </p>
-                </div>
-
-                {/* Tech Pills */}
-                <div className="flex flex-wrap gap-2">
-                  {project.skills.map((skill, i) => (
-                    <span 
-                      key={i} 
-                      className="text-[10px] font-bold tracking-wider px-3.5 py-1.5 bg-muted/50 text-muted-foreground border border-border/40 rounded-full group-hover:border-border/80 transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex items-center gap-3 mt-2">
-                  <a 
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-full border border-border/80 hover:bg-foreground hover:text-background text-sm font-semibold transition-all duration-300"
+              {/* Status pills */}
+              <div className="flex items-center gap-1 bg-muted/30 p-1 rounded-full border border-border/40 text-[11px] font-bold">
+                {["All", "Done", "In Progress"].map((st) => (
+                  <button
+                    key={st}
+                    onClick={() => setStatusFilter(st)}
+                    className={`px-3 py-1 rounded-full transition-all ${
+                      statusFilter === st ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
-                    <FaGithub size={14} /> GitHub
-                  </a>
-                  <a 
-                    href={project.live}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-full bg-foreground text-background hover:bg-foreground/80 text-sm font-semibold transition-all duration-300"
-                  >
-                    <ExternalLink size={14} /> Live Demo
-                  </a>
-                </div>
+                    {st}
+                  </button>
+                ))}
               </div>
             </div>
-          ))}
+
+          </div>
         </div>
+
+        {/* Floating Screenshot Preview Card (Hover Effect) */}
+        {hoveredProject && viewMode === "list" && (
+          <div className="fixed bottom-8 right-8 z-40 w-72 rounded-2xl overflow-hidden border border-border/60 glass-panel shadow-2xl pointer-events-none animate-fadeIn hidden lg:block">
+            <img
+              src={hoveredProject.img}
+              alt={hoveredProject.title}
+              className="w-full h-40 object-cover"
+            />
+            <div className="p-3 flex flex-col gap-1">
+              <span className="text-[10px] font-mono font-bold text-sky-400">
+                {hoveredProject.realm}
+              </span>
+              <h4 className="text-sm font-bold text-foreground">
+                {hoveredProject.title}
+              </h4>
+            </div>
+          </div>
+        )}
+
+        {/* Project List / Grid View Display */}
+        {viewMode === "list" ? (
+          <div className="flex flex-col gap-4">
+            {filteredProjects.map((p) => (
+              <div
+                key={p.id}
+                onMouseEnter={() => setHoveredProject(p)}
+                onMouseLeave={() => setHoveredProject(null)}
+                className="p-6 md:p-8 rounded-3xl border border-border/40 bg-muted/10 hover:bg-muted/30 hover:border-primary/50 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group cursor-pointer"
+              >
+                {/* Left: ID & Title & Desc */}
+                <div className="flex items-start md:items-center gap-6 flex-1">
+                  <span className="text-2xl font-mono font-black text-muted-foreground/40 group-hover:text-primary transition-colors">
+                    {p.id}
+                  </span>
+                  <div className="flex flex-col gap-2 max-w-xl">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {p.title}
+                      </h3>
+                      <span className={`text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${
+                        p.status === "DONE"
+                          ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+                          : "bg-amber-500/10 text-amber-400 border-amber-500/30"
+                      }`}>
+                        {p.status}
+                      </span>
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: Tech Tags & Links */}
+                <div className="flex flex-wrap md:flex-nowrap items-center gap-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tech.map((t, i) => (
+                      <span key={i} className="text-[10px] font-mono font-semibold px-2.5 py-1 rounded-md bg-background border border-border/40 text-muted-foreground">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-full border border-border/40 bg-background hover:bg-foreground hover:text-background transition-colors"
+                    title="View Source"
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="flex flex-col border border-border/40 bg-muted/20 hover:bg-muted/30 hover:border-primary/50 transition-all duration-500 rounded-[2rem] overflow-hidden group shadow-lg"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="text-[9px] font-mono font-bold tracking-widest text-foreground bg-background/80 backdrop-blur-md px-3 py-1 rounded-full border border-border/60">
+                      {project.realm}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col gap-4 flex-1 justify-between">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {project.desc}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tech.map((t, i) => (
+                      <span key={i} className="text-[9px] font-mono font-semibold px-2 py-0.5 rounded bg-muted text-muted-foreground">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>

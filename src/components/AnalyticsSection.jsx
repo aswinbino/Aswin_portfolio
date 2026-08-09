@@ -114,4 +114,6 @@ export default function AnalyticsSection() {
 
       </div>
     </section>
-  )
+  );
+}
+
