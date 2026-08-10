@@ -126,12 +126,12 @@ function Header({ theme, toggleTheme }) {
         <nav className="hidden md:flex items-center gap-2 relative">
           <div className="flex items-center bg-muted/30 border border-border/40 rounded-full px-2 py-1 gap-1">
             
-            {/* Beranda (Home) */}
+            {/* Home */}
             <a 
               href="#hero" 
               className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wide text-foreground hover:bg-muted/60 transition-colors"
             >
-              Beranda
+              Home
             </a>
 
             {/* About Mega Dropdown Trigger */}
@@ -176,12 +176,12 @@ function Header({ theme, toggleTheme }) {
               )}
             </div>
 
-            {/* Kontak (Contact) */}
+            {/* Contact */}
             <a 
               href="#contact" 
               className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wide text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
             >
-              Kontak
+              Contact
             </a>
 
           </div>
