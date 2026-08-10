@@ -127,7 +127,7 @@ export default function Contact() {
                     type="text"
                     value={formState.name}
                     onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
-                    placeholder="John Doe"
+                    placeholder="Aswin"
                     required
                     className="w-full px-5 py-4 rounded-2xl border border-border/40 bg-muted/10 text-foreground text-sm font-medium outline-none focus:border-primary/80 focus:bg-muted/20 transition-all"
                   />
@@ -141,7 +141,7 @@ export default function Contact() {
                     type="email"
                     value={formState.email}
                     onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))}
-                    placeholder="john@example.com"
+                    placeholder="aswin@example.com"
                     required
                     className="w-full px-5 py-4 rounded-2xl border border-border/40 bg-muted/10 text-foreground text-sm font-medium outline-none focus:border-primary/80 focus:bg-muted/20 transition-all"
                   />
