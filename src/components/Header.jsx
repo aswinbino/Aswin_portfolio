@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { 
   Sun, Moon, Menu, X, Maximize2, Minimize2, Globe, 
   FolderKanban, Briefcase, Cpu, Award, Image, FileText, BookOpen, MessageSquare 
@@ -11,6 +11,7 @@ function Header({ theme, toggleTheme }) {
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [timeString, setTimeString] = useState("");
+  const dropdownRef = useRef(null);
 
   // Live Digital Clock (HH:MM:SS)
   useEffect(() => {
@@ -24,6 +25,17 @@ function Header({ theme, toggleTheme }) {
     updateClock();
     const interval = setInterval(updateClock, 1000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setAboutDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Scroll Detection
@@ -85,10 +97,10 @@ function Header({ theme, toggleTheme }) {
       icon: <FileText className="w-4 h-4 text-blue-400" />
     },
     {
-      title: "Analytics",
-      desc: "GitHub & code metrics",
-      href: "#analytics",
-      icon: <BookOpen className="w-4 h-4 text-teal-400" />
+      title: "Experience",
+      desc: "MERN stack internship",
+      href: "#experience",
+      icon: <Briefcase className="w-4 h-4 text-teal-400" />
     },
     {
       title: "Contact",
@@ -99,10 +111,20 @@ function Header({ theme, toggleTheme }) {
   ];
 
   const socialLinks = [
-    { icon: <FaGithub size={17} />, href: "https://github.com/aswinbino/Aswin_portfolio", label: "GitHub" },
-    { icon: <FaLinkedin size={17} />, href: "#", label: "LinkedIn" },
-    { icon: <FaInstagram size={17} />, href: "#", label: "Instagram" }
+    { icon: <FaGithub size={17} />, href: "https://github.com/aswinbino", label: "GitHub" },
+    { icon: <FaLinkedin size={17} />, href: "https://www.linkedin.com/in/aswin-bino/", label: "LinkedIn" }
   ];
+
+  const handleNavClick = (href) => {
+    setAboutDropdownOpen(false);
+    setMobileMenuOpen(false);
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <header className="fixed top-4 left-0 w-full z-50 px-4 md:px-8 flex justify-center pointer-events-none">
@@ -110,12 +132,12 @@ function Header({ theme, toggleTheme }) {
         className={`w-full max-w-[85rem] px-5 py-3 flex justify-between items-center rounded-full border border-border/40 backdrop-blur-xl transition-all duration-500 pointer-events-auto ${
           scrolled 
             ? "bg-background/80 shadow-2xl border-border/80" 
-            : "bg-background/30"
+            : "bg-background/40"
         }`}
       >
         {/* Left: Digital Clock */}
         <div className="flex items-center gap-3 select-none">
-          <a href="#hero" className="flex items-center gap-2 group">
+          <a href="#hero" onClick={(e) => { e.preventDefault(); handleNavClick("#hero"); }} className="flex items-center gap-2 group">
             <span className="text-xs md:text-sm font-mono font-bold tracking-widest px-3 py-1 rounded-full bg-muted/40 border border-border/40 text-foreground group-hover:border-primary/60 transition-colors">
               {timeString || "22:28:22"}
             </span>
@@ -129,6 +151,7 @@ function Header({ theme, toggleTheme }) {
             {/* Home */}
             <a 
               href="#hero" 
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} 
               className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wide text-foreground hover:bg-muted/60 transition-colors"
             >
               Home
@@ -136,6 +159,7 @@ function Header({ theme, toggleTheme }) {
 
             {/* About Mega Dropdown Trigger */}
             <div 
+              ref={dropdownRef}
               className="relative"
               onMouseEnter={() => setAboutDropdownOpen(true)}
               onMouseLeave={() => setAboutDropdownOpen(false)}
@@ -143,35 +167,46 @@ function Header({ theme, toggleTheme }) {
               <button 
                 onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                 className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wide text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors flex items-center gap-1.5"
+                aria-expanded={aboutDropdownOpen}
               >
                 About
-                <span className="text-[9px] opacity-70">▼</span>
+                <span className={`text-[9px] opacity-70 transition-transform duration-200 ${aboutDropdownOpen ? "rotate-180" : ""}`}>▼</span>
               </button>
 
-              {/* Mega Dropdown Menu */}
+              {/* Mega Dropdown Menu Container with hover-bridge padding */}
               {aboutDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[460px] p-4 rounded-3xl glass-panel shadow-2xl border border-border/60 grid grid-cols-2 gap-2 z-50 animate-fadeIn">
-                  {aboutMenuItems.map((item) => (
-                    <a
-                      key={item.title}
-                      href={item.href}
-                      target={item.target || undefined}
-                      rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-                      className="p-3 rounded-2xl bg-muted/20 hover:bg-muted/60 border border-transparent hover:border-border/60 transition-all flex items-start gap-3 group"
-                    >
-                      <div className="p-2 rounded-xl bg-background border border-border/40 group-hover:scale-110 transition-transform">
-                        {item.icon}
-                      </div>
-                      <div className="flex flex-col text-left">
-                        <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
-                          {item.title}
-                        </span>
-                        <span className="text-[10px] text-muted-foreground font-medium leading-tight">
-                          {item.desc}
-                        </span>
-                      </div>
-                    </a>
-                  ))}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[460px] z-50 animate-fadeIn">
+                  <div className="p-3 rounded-3xl glass-panel shadow-2xl border border-border/80 grid grid-cols-2 gap-2">
+                    {aboutMenuItems.map((item) => (
+                      <a
+                        key={item.title}
+                        href={item.href}
+                        target={item.target || undefined}
+                        rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                        onClick={(e) => {
+                          if (item.href.startsWith("#")) {
+                            e.preventDefault();
+                            handleNavClick(item.href);
+                          } else {
+                            setAboutDropdownOpen(false);
+                          }
+                        }}
+                        className="p-3 rounded-2xl bg-muted/30 hover:bg-muted/70 dark:bg-muted/20 dark:hover:bg-muted/60 border border-transparent hover:border-border/60 transition-all flex items-start gap-3 group cursor-pointer"
+                      >
+                        <div className="p-2 rounded-xl bg-background border border-border/40 group-hover:scale-110 transition-transform">
+                          {item.icon}
+                        </div>
+                        <div className="flex flex-col text-left">
+                          <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
+                            {item.title}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground font-medium leading-tight">
+                            {item.desc}
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -179,6 +214,7 @@ function Header({ theme, toggleTheme }) {
             {/* Contact */}
             <a 
               href="#contact" 
+              onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
               className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wide text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
             >
               Contact

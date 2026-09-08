@@ -5,7 +5,7 @@ import About from "./pages/About/About"
 import Services from "./pages/Services/Services"
 import Project from "./pages/Project/Project"
 import CertificationsSection from "./components/CertificationsSection"
-import AnalyticsSection from "./components/AnalyticsSection"
+import InternshipExperience from "./components/InternshipExperience"
 import Contact from "./pages/Contact/Contact"
 import Footer from "./pages/Footer/Footer"
 
@@ -28,9 +28,11 @@ function App() {
     const root = window.document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
+      root.classList.remove("light");
       root.style.colorScheme = "dark";
     } else {
       root.classList.remove("dark");
+      root.classList.add("light");
       root.style.colorScheme = "light";
     }
     localStorage.setItem("portfolio-theme", theme);
@@ -117,24 +119,31 @@ function App() {
         </div>
       </div>
 
-      {/* 2. Background Dot Grid */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,_#888_0.6px,_transparent_0.6px)] dark:bg-[radial-gradient(circle,_#444_0.6px,_transparent_0.6px)] opacity-[0.15] [background-size:28px_28px] pointer-events-none"></div>
-
-      {/* 3. Radial Gradient Spotlights */}
+      {/* 2. Modern Mesh Atmosphere & Glows */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        {/* Day theme ambient mesh glows */}
+        <div className="absolute -top-[15%] left-[5%] w-[600px] h-[600px] rounded-full bg-sky-400/15 dark:bg-sky-500/10 blur-[120px] transition-all duration-700"></div>
+        <div className="absolute top-[20%] -right-[5%] w-[550px] h-[550px] rounded-full bg-purple-400/15 dark:bg-purple-600/10 blur-[130px] transition-all duration-700"></div>
+        <div className="absolute top-[55%] left-[10%] w-[500px] h-[500px] rounded-full bg-emerald-400/10 dark:bg-emerald-500/5 blur-[120px] transition-all duration-700"></div>
+        <div className="absolute bottom-[5%] right-[10%] w-[600px] h-[600px] rounded-full bg-amber-400/10 dark:bg-amber-500/5 blur-[140px] transition-all duration-700"></div>
+
+        {/* Angled subtle spotlight beams */}
         <div 
-          className="absolute top-0 left-0 w-[560px] h-[1380px] origin-top-left -translate-y-[300px] -rotate-[45deg] opacity-[0.08] dark:opacity-[0.12] transition-opacity duration-1000"
+          className="absolute top-0 left-0 w-[560px] h-[1380px] origin-top-left -translate-y-[300px] -rotate-[45deg] opacity-[0.12] dark:opacity-[0.15] transition-opacity duration-1000"
           style={{
-            background: "radial-gradient(50% 50% at 50% 50%, hsla(202, 100%, 70%, 0.15) 0%, hsla(202, 100%, 70%, 0.05) 50%, transparent 100%)"
+            background: "radial-gradient(50% 50% at 50% 50%, hsla(202, 100%, 65%, 0.25) 0%, hsla(202, 100%, 65%, 0.05) 50%, transparent 100%)"
           }}
         ></div>
         <div 
-          className="absolute top-0 right-0 w-[560px] h-[1380px] origin-top-right -translate-y-[300px] rotate-[45deg] opacity-[0.08] dark:opacity-[0.12] transition-opacity duration-1000"
+          className="absolute top-0 right-0 w-[560px] h-[1380px] origin-top-right -translate-y-[300px] rotate-[45deg] opacity-[0.12] dark:opacity-[0.15] transition-opacity duration-1000"
           style={{
-            background: "radial-gradient(50% 50% at 50% 50%, hsla(340, 100%, 70%, 0.15) 0%, hsla(340, 100%, 70%, 0.05) 50%, transparent 100%)"
+            background: "radial-gradient(50% 50% at 50% 50%, hsla(280, 100%, 65%, 0.25) 0%, hsla(280, 100%, 65%, 0.05) 50%, transparent 100%)"
           }}
         ></div>
       </div>
+
+      {/* 3. Refined Architectural Dot Grid */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,_#94a3b8_0.8px,_transparent_0.8px)] dark:bg-[radial-gradient(circle,_#3f3f46_0.7px,_transparent_0.7px)] opacity-[0.22] dark:opacity-[0.14] [background-size:24px_24px] pointer-events-none"></div>
 
       {/* 4. Core Layout Container */}
       <div className={`relative z-10 flex flex-col min-h-screen transition-all duration-1000 ${
@@ -147,7 +156,7 @@ function App() {
           <div className="reveal-on-scroll"><Services /></div>
           <div className="reveal-on-scroll"><Project /></div>
           <div className="reveal-on-scroll"><CertificationsSection /></div>
-          <div className="reveal-on-scroll"><AnalyticsSection /></div>
+          <div className="reveal-on-scroll"><InternshipExperience /></div>
           <div className="reveal-on-scroll"><Contact /></div>
         </main>
         <Footer />

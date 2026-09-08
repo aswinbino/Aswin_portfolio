@@ -19,10 +19,10 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen w-full flex flex-col justify-center pt-32 pb-16 overflow-hidden select-none"
+      className="relative min-h-screen w-full flex flex-col justify-center pt-28 pb-12 md:pt-32 md:pb-16 overflow-visible select-none"
     >
       {/* 1. Main Typography Grid */}
-      <div className="max-w-[105rem] w-full mx-auto px-6 md:px-12 flex flex-col gap-6 md:gap-8 justify-center flex-1">
+      <div className="max-w-[105rem] w-full mx-auto px-6 md:px-12 flex flex-col gap-5 md:gap-7 justify-center flex-1">
         
         {/* Line 1: Tagline Left + Huge Text Right */}
         <div className="flex flex-col md:flex-row md:items-end justify-start md:justify-end gap-4 relative">
@@ -32,12 +32,12 @@ export default function Hero() {
           
           <div className="relative">
             {/* Github floating icon */}
-            <div className="absolute -top-6 right-2 text-primary/60 hover:text-primary z-20 animate-fadeIn hover:scale-110 transition-all" style={{ animationDelay: "400ms" }}>
-              <a href="https://github.com/aswinbino/Aswin_portfolio" target="_blank" rel="noopener noreferrer" className="block">
+            <div className="absolute -top-6 right-2 text-primary/70 hover:text-primary z-20 animate-fadeIn hover:scale-110 transition-all" style={{ animationDelay: "300ms" }}>
+              <a href="https://github.com/aswinbino/Aswin_portfolio" target="_blank" rel="noopener noreferrer" className="block" title="GitHub Repository">
                 <FaGithub size={28} />
               </a>
             </div>
-            <h1 className="text-[clamp(2.5rem,10vw,11rem)] font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "300ms" }}>
+            <h1 className="text-[clamp(2.8rem,9vw,9.8rem)] font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "250ms" }}>
               FULL STACK /
             </h1>
           </div>
@@ -45,7 +45,7 @@ export default function Hero() {
 
         {/* Line 2: SOFTWARE */}
         <div className="flex flex-row items-center justify-start md:justify-end gap-4 relative">
-          <h1 className="text-[clamp(2.5rem,10vw,11rem)] font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "400ms" }}>
+          <h1 className="text-[clamp(2.8rem,9vw,9.8rem)] font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "350ms" }}>
             SOFTWARE
           </h1>
         </div>
@@ -53,14 +53,14 @@ export default function Hero() {
         {/* Line 3: DEVELOPER with Zap Icon */}
         <div className="flex flex-row items-center justify-start md:justify-end gap-4 relative">
           <div className="relative">
-            {/* Instagram floating icon */}
-            <div className="absolute -top-10 left-4 text-primary/60 hover:text-primary z-20 animate-fadeIn hover:scale-110 transition-all" style={{ animationDelay: "600ms" }}>
-              <a href="#" className="block">
-                <FaInstagram size={28} />
+            {/* Instagram / LinkedIn floating icon */}
+            <div className="absolute -top-8 left-3 text-primary/70 hover:text-primary z-20 animate-fadeIn hover:scale-110 transition-all" style={{ animationDelay: "500ms" }}>
+              <a href="https://www.linkedin.com/in/aswin-bino/" target="_blank" rel="noopener noreferrer" className="block" title="LinkedIn Profile">
+                <FaLinkedin size={28} />
               </a>
             </div>
 
-            <h1 className="text-[clamp(2.5rem,10vw,11rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "500ms" }}>
+            <h1 className="text-[clamp(2.8rem,9vw,9.8rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "450ms" }}>
               <span>DEVE</span>
               <div className="mx-[0.03em] relative cursor-pointer group flex items-center justify-center">
                 <Zap className="w-[0.85em] h-[0.85em] text-sky-400 fill-sky-400/10 group-hover:text-sky-300 group-hover:fill-sky-300/20 transition-all duration-300 animate-pulse" />
@@ -71,8 +71,8 @@ export default function Hero() {
         </div>
 
         {/* Line 4: ENGINEER with Bot Icon + Subtext Right */}
-        <div className="flex flex-col md:flex-row md:items-start justify-start md:justify-end gap-6 relative">
-          <h1 className="text-[clamp(2.5rem,10vw,11rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "700ms" }}>
+        <div className="flex flex-col md:flex-row md:items-start justify-start md:justify-end gap-5 md:gap-7 relative">
+          <h1 className="text-[clamp(2.8rem,9vw,9.8rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn" style={{ animationDelay: "550ms" }}>
             <span>EN</span>
             <div className="mx-[0.03em] relative cursor-pointer group flex items-center justify-center">
               <Bot className="w-[0.85em] h-[0.85em] text-yellow-500 fill-yellow-500/10 group-hover:text-yellow-400 group-hover:fill-yellow-400/20 transition-all duration-300" />
@@ -80,14 +80,14 @@ export default function Hero() {
             <span>GINEER</span>
           </h1>
 
-          <p className="text-[10px] md:text-xs text-muted-foreground pt-2 md:pt-6 leading-relaxed max-w-[250px] md:max-w-[200px] font-medium uppercase tracking-widest animate-fadeIn" style={{ animationDelay: "800ms" }}>
+          <p className="text-[10px] md:text-xs text-muted-foreground pt-2 md:pt-4 leading-relaxed max-w-[220px] font-medium uppercase tracking-widest animate-fadeIn" style={{ animationDelay: "600ms" }}>
             Open to all forms of remote collaboration, internships, and technical contracts.
           </p>
         </div>
 
         {/* Line 5: PROMPT ENGINEER */}
         <div className="flex flex-row items-center justify-start md:justify-end gap-4 relative">
-          <h2 className="text-[clamp(1.5rem,5vw,6rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn opacity-70" style={{ animationDelay: "900ms" }}>
+          <h2 className="text-[clamp(1.5rem,5vw,5.5rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny animate-fadeIn opacity-75" style={{ animationDelay: "650ms" }}>
             <span>PROMPT EN</span>
             <div className="mx-[0.03em] relative cursor-pointer group flex items-center justify-center">
               <Zap className="w-[0.85em] h-[0.85em] text-purple-400 fill-purple-400/10 group-hover:text-purple-300 group-hover:fill-purple-300/20 transition-all duration-300 animate-pulse" />
@@ -99,8 +99,8 @@ export default function Hero() {
       </div>
 
       {/* 2. Bottom Meta-Bar */}
-      <div className="mx-auto max-w-[105rem] w-full px-6 md:px-12 mt-12 md:mt-24">
-        <div className="flex items-center justify-between gap-6 border-t border-border/20 pt-8 animate-fadeIn" style={{ animationDelay: "900ms" }}>
+      <div className="mx-auto max-w-[105rem] w-full px-6 md:px-12 mt-10 md:mt-16">
+        <div className="flex items-center justify-between gap-6 border-t border-border/20 pt-6 animate-fadeIn" style={{ animationDelay: "750ms" }}>
           
           {/* Location / Year info */}
           <div className="text-[10px] md:text-xs font-bold tracking-[0.3em] text-muted-foreground uppercase">
@@ -143,7 +143,7 @@ export default function Hero() {
       </div>
 
       {/* 3. Floating "Available for Opportunities" Side Badge */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden lg:flex items-center animate-fadeIn" style={{ animationDelay: "1000ms" }}>
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden 2xl:flex items-center animate-fadeIn" style={{ animationDelay: "850ms" }}>
         <div className="bg-foreground text-background py-8 px-3.5 text-[9px] font-black uppercase tracking-[0.4em] shadow-2xl rounded-r-2xl border-r border-y border-border/40 select-none">
           <span className="rotate-0 [writing-mode:vertical-rl] leading-none">
             AVAILABLE FOR OPPORTUNITY

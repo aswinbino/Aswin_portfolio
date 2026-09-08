@@ -1,15 +1,26 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa"
 import { ArrowUp, ChevronDown } from "lucide-react"
 
 function Footer() {
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
+  const footerDropdownRef = useRef(null);
 
   const socialLinks = [
     { icon: <FaGithub size={18} />, href: "https://github.com/aswinbino/Aswin_portfolio", label: "GitHub" },
-    { icon: <FaLinkedin size={18} />, href: "#", label: "LinkedIn" },
+    { icon: <FaLinkedin size={18} />, href: "https://www.linkedin.com/in/aswin-bino/", label: "LinkedIn" },
     { icon: <FaInstagram size={18} />, href: "#", label: "Instagram" }
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (footerDropdownRef.current && !footerDropdownRef.current.contains(event.target)) {
+        setMoreDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -41,7 +52,7 @@ function Footer() {
         </div>
 
         {/* Right Actions: Back to Top & More Links Dropdown */}
-        <div className="flex items-center gap-3 relative">
+        <div className="flex items-center gap-3 relative" ref={footerDropdownRef}>
           
           {/* More Links Dropdown */}
           <div className="relative">
@@ -70,8 +81,8 @@ function Footer() {
                 <a href="#certifications" className="p-2.5 rounded-xl hover:bg-muted/60 text-foreground transition-colors">
                   Certifications
                 </a>
-                <a href="#analytics" className="p-2.5 rounded-xl hover:bg-muted/60 text-foreground transition-colors">
-                  Analytics
+                <a href="#experience" className="p-2.5 rounded-xl hover:bg-muted/60 text-foreground transition-colors">
+                  Internship Experience
                 </a>
                 <a href="#contact" className="p-2.5 rounded-xl hover:bg-muted/60 text-foreground transition-colors">
                   Contact Form

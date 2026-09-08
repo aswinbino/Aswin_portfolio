@@ -7,7 +7,9 @@ import {
   FaGithub,
   FaNodeJs,
   FaJava,
-  FaPython
+  FaPython,
+  FaDocker,
+  FaLinux
 } from "react-icons/fa";
 
 import {
@@ -18,14 +20,18 @@ import {
   SiMysql,
   SiFastapi,
   SiSocketdotio,
-  SiOpenai
+  SiOpenai,
+  SiPostman,
+  SiVercel,
+  SiTypescript
 } from "react-icons/si";
 
-import { Bot, Sparkles } from "lucide-react";
+import { Bot, Sparkles, Terminal } from "lucide-react";
 
 function Skills() {
   const row1 = [
     { name: "React.js", icon: <FaReact className="text-[#61dafb]" /> },
+    { name: "TypeScript", icon: <SiTypescript className="text-[#3178c6]" /> },
     { name: "JavaScript (ES6+)", icon: <FaJs className="text-[#f7df1e]" /> },
     { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06b6d4]" /> },
     { name: "HTML5", icon: <FaHtml5 className="text-[#e34f26]" /> },
@@ -48,8 +54,12 @@ function Skills() {
   const row3 = [
     { name: "Generative AI", icon: <SiOpenai className="text-[#10a37f]" /> },
     { name: "Prompt Engineering", icon: <Bot className="text-purple-400" /> },
+    { name: "Docker", icon: <FaDocker className="text-[#2496ed]" /> },
+    { name: "Postman", icon: <SiPostman className="text-[#ff6c37]" /> },
     { name: "MySQL", icon: <SiMysql className="text-[#4479a1]" /> },
-    { name: "Firebase", icon: <SiFirebase className="text-[#ffca28]" /> }
+    { name: "Firebase", icon: <SiFirebase className="text-[#ffca28]" /> },
+    { name: "Linux", icon: <FaLinux className="text-amber-500" /> },
+    { name: "Vercel", icon: <SiVercel className="text-foreground" /> }
   ];
 
   const renderCarouselRow = (items, directionTrackClass = "track-left") => {

@@ -1,36 +1,40 @@
 import { Award, ExternalLink, CheckCircle2 } from "lucide-react"
 
+import promptCertImg from "../assets/images/prompt_engineering_cert.png"
+import fullstackCertImg from "../assets/images/full_stack_developer_cert.png"
 import img1 from "/img1.png"
-import img2 from "/img2.png"
 
 export default function CertificationsSection() {
   const certs = [
     {
       id: 1,
-      title: "Deep Learning & Neural Networks",
-      issuer: "Udemy / DeepLearning.AI",
-      date: "2025",
-      badge: "Verified Certificate",
-      img: img1,
-      skills: ["Neural Networks", "PyTorch", "Computer Vision", "LLMs"]
+      title: "Prompt Engineering Course",
+      issuer: "Error Makes Clever (EMC)",
+      date: "2026",
+      badge: "Certificate of Excellence",
+      img: promptCertImg,
+      pdf: `${import.meta.env.BASE_URL}Prompt_Engineering_Certificate.pdf`,
+      skills: ["Prompt Engineering", "LLM Systems", "Generative AI", "AI Automation"]
     },
     {
       id: 2,
-      title: "AWS Cloud & DevOps Foundation",
-      issuer: "Amazon Web Services",
-      date: "2025",
-      badge: "AWS Educate",
-      img: img2,
-      skills: ["AWS EC2", "S3", "Cloud Architecture", "DevOps"]
+      title: "Full Stack Developer (MERN)",
+      issuer: "Error Makes Clever",
+      date: "2026",
+      badge: "ID: FSWD20135",
+      img: fullstackCertImg,
+      pdf: `${import.meta.env.BASE_URL}Full_Stack_Developer_Certificate.pdf`,
+      skills: ["React.js", "Node.js", "MongoDB", "Express.js", "Full Stack MERN"]
     },
     {
       id: 3,
-      title: "Full-Stack Web Development",
-      issuer: "Meta / FreeCodeCamp",
-      date: "2024",
-      badge: "Professional Certificate",
+      title: "Advanced Web Architecture",
+      issuer: "Meta / Open Source Standards",
+      date: "2025",
+      badge: "Verified Credential",
       img: img1,
-      skills: ["React.js", "Node.js", "REST APIs", "Tailwind CSS"]
+      pdf: `${import.meta.env.BASE_URL}Full_Stack_Developer_Certificate.pdf`,
+      skills: ["REST APIs", "Tailwind CSS", "Modern JavaScript", "UI/UX"]
     }
   ];
 
@@ -48,7 +52,7 @@ export default function CertificationsSection() {
             Validating Excellence through Global Standards.
           </h2>
           <p className="text-sm text-muted-foreground max-w-xl">
-            A collection of professional certifications in AI, Web Development, and Cloud Infrastructure.
+            A collection of professional certifications in AI, Prompt Engineering, and Full-Stack MERN Architecture.
           </p>
         </div>
 
@@ -60,7 +64,7 @@ export default function CertificationsSection() {
               className="p-6 rounded-3xl border border-border/40 bg-muted/20 hover:bg-muted/30 hover:border-primary/60 transition-all duration-500 flex flex-col justify-between gap-6 group shadow-lg"
             >
               <div className="flex flex-col gap-4">
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-border/30">
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-border/30 bg-muted/40">
                   <img
                     src={c.img}
                     alt={c.title}
@@ -90,7 +94,9 @@ export default function CertificationsSection() {
               </div>
 
               <a
-                href="#certifications"
+                href={c.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-2.5 rounded-xl border border-border/60 bg-background hover:bg-foreground hover:text-background text-xs font-bold transition-all text-center flex items-center justify-center gap-2"
               >
                 View Credential <ExternalLink size={14} />

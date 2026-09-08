@@ -12,67 +12,111 @@ import img6 from "../../assets/images/Task manager app.jpg";
 const projectsData = [
   {
     id: "01",
-    title: "Browser Automation Agent",
+    title: "Solo Travel",
     realm: "Artificial Intelligence",
     status: "DONE",
-    desc: "A command-line interface (CLI) and web engine tool for AI-driven browser automation and workflow execution.",
-    tech: ["Python 3.11", "browser-use", "Groq", "Playwright", "LLM"],
+    desc: "Automated travel itinerary generator with browser automation and AI suggestions.",
+    tech: ["React", "Node.js", "Playwright", "Tailwind CSS"],
     img: img4,
-    github: "https://github.com/aswinbino/Aswin_portfolio",
+    github: "https://github.com/aswinbino/Solo-Travelling-",
     live: "#"
   },
   {
     id: "02",
-    title: "Swarm AI Blog Writer",
+    title: "AI Blog Writer",
     realm: "Artificial Intelligence",
     status: "DONE",
-    desc: "Intelligent multi-agent system built with Vue 3 / React integrating multiple LLMs for automated research-backed content generation.",
-    tech: ["Python", "OpenAI API", "Multi-Agent", "FastAPI"],
+    desc: "AI-powered blog generation platform using multi-agent LLMs.",
+    tech: ["Python", "OpenAI API", "FastAPI", "React", "Tailwind CSS"],
     img: img5,
-    github: "https://github.com/aswinbino/Aswin_portfolio",
+    github: "https://github.com/aswinbino/Ai-blog",
     live: "#"
   },
   {
     id: "03",
-    title: "Creative Developer Portfolio",
-    realm: "Software Architecture",
+    title: "Legal Docs Platform",
+    realm: "Artificial Intelligence",
     status: "DONE",
-    desc: "Modern full-stack portfolio website built with React 19 + Vite + Tailwind, featuring micro-interactions and dark aesthetics.",
-    tech: ["React.js", "Tailwind CSS", "Vite", "JavaScript"],
+    desc: "Web application for managing legal documents and contracts.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     img: img2,
-    github: "https://github.com/aswinbino/Aswin_portfolio",
+    github: "https://github.com/aswinbino/Law",
     live: "#"
   },
   {
     id: "04",
-    title: "SNBTin - Exam Prep Platform",
+    title: "Smart Ticketing System",
     realm: "Full-Stack",
     status: "DONE",
-    desc: "Educational platform with 6 modular learning units for test preparation, featuring quiz metrics and real-time scores.",
-    tech: ["React.js", "Node.js", "Express", "MongoDB"],
+    desc: "End‑to‑end ticket booking and management platform.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     img: img1,
-    github: "https://github.com/aswinbino/Aswin_portfolio",
+    github: "https://github.com/aswinbino/aswin-smart-ticket",
     live: "#"
   },
   {
     id: "05",
-    title: "Terraflow Real-Time Platform",
-    realm: "Software Architecture",
-    status: "IN PROGRESS",
-    desc: "Real-time telemetry integrated with satellite data and sensor pipelines for automated risk scoring.",
-    tech: ["Python", "FastAPI", "WebSockets", "Docker"],
+    title: "Bulk Mail Sender",
+    realm: "Full-Stack",
+    status: "DONE",
+    desc: "High‑throughput bulk email sending service with analytics.",
+    tech: ["Node.js", "Express", "MongoDB", "React", "Tailwind CSS"],
     img: img3,
-    github: "https://github.com/aswinbino/Aswin_portfolio",
+    github: "https://github.com/aswinbino/BulkMail",
     live: "#"
   },
   {
     id: "06",
-    title: "DocsInsight RAG Engine",
-    realm: "Artificial Intelligence",
+    title: "Apple Clone",
+    realm: "Full-Stack",
     status: "DONE",
-    desc: "Enterprise Retrieval-Augmented Generation system for intelligent document analysis and vector search.",
-    tech: ["Python", "LangChain", "Vector DB", "Streamlit"],
+    desc: "Responsive Apple product showcase site with interactive UI.",
+    tech: ["React", "Tailwind CSS", "Vite"],
     img: img6,
+    github: "https://github.com/aswinbino/apple",
+    live: "#"
+  },
+  {
+    id: "07",
+    title: "Weather Dashboard",
+    realm: "Software Architecture",
+    status: "DONE",
+    desc: "Real‑time weather visualization using public APIs.",
+    tech: ["React", "Tailwind CSS", "OpenWeather API"],
+    img: img3,
+    github: "https://github.com/aswinbino/weather",
+    live: "#"
+  },
+  {
+    id: "08",
+    title: "Destinatio",
+    realm: "Full-Stack",
+    status: "DONE",
+    desc: "Travel destination explorer with curated recommendations.",
+    tech: ["React", "Node.js", "Tailwind CSS"],
+    img: img2,
+    github: "https://github.com/aswinbino/destinatio",
+    live: "#"
+  },
+  {
+    id: "09",
+    title: "Destination Explorer",
+    realm: "Full-Stack",
+    status: "DONE",
+    desc: "Enhanced destination discovery platform with map integration.",
+    tech: ["React", "Mapbox", "Tailwind CSS"],
+    img: img2,
+    github: "https://github.com/aswinbino/destination",
+    live: "#"
+  },
+  {
+    id: "10",
+    title: "Creative Developer Portfolio",
+    realm: "Software Architecture",
+    status: "DONE",
+    desc: "Modern full‑stack portfolio website built with React 19 + Vite + Tailwind, featuring micro‑interactions and dark aesthetics.",
+    tech: ["React 19", "Tailwind CSS", "Vite", "JavaScript", "Lucide Icons"],
+    img: img2,
     github: "https://github.com/aswinbino/Aswin_portfolio",
     live: "#"
   }
@@ -114,15 +158,15 @@ export default function Project() {
         {/* Impact Counter Banner */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-muted/20 border border-border/40 mb-16 backdrop-blur-xl">
           <div className="flex flex-col">
-            <span className="text-3xl md:text-4xl font-black text-foreground">21+</span>
+            <span className="text-3xl md:text-4xl font-black text-foreground">20+</span>
             <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">PROJECTS BUILT</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-3xl md:text-4xl font-black text-foreground">2+</span>
-            <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">YEARS EXPERIENCE</span>
+            <span className="text-3xl md:text-4xl font-black text-foreground">0 - 1</span>
+            <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">YEAR EXPERIENCE</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-3xl md:text-4xl font-black text-foreground">34+</span>
+            <span className="text-3xl md:text-4xl font-black text-foreground">20+</span>
             <span className="text-[10px] font-mono font-bold tracking-widest text-muted-foreground uppercase mt-1">TECH STACK</span>
           </div>
           <div className="flex flex-col">
@@ -217,24 +261,7 @@ export default function Project() {
           </div>
         </div>
 
-        {/* Floating Screenshot Preview Card (Hover Effect) */}
-        {hoveredProject && viewMode === "list" && (
-          <div className="fixed bottom-8 right-8 z-40 w-72 rounded-2xl overflow-hidden border border-border/60 glass-panel shadow-2xl pointer-events-none animate-fadeIn hidden lg:block">
-            <img
-              src={hoveredProject.img}
-              alt={hoveredProject.title}
-              className="w-full h-40 object-cover"
-            />
-            <div className="p-3 flex flex-col gap-1">
-              <span className="text-[10px] font-mono font-bold text-sky-400">
-                {hoveredProject.realm}
-              </span>
-              <h4 className="text-sm font-bold text-foreground">
-                {hoveredProject.title}
-              </h4>
-            </div>
-          </div>
-        )}
+
 
         {/* Project List / Grid View Display */}
         {viewMode === "list" ? (

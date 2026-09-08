@@ -4,8 +4,8 @@ import { Cpu, Compass, ShieldAlert, Sparkles, Code2, Database, Layers } from "lu
 function About() {
   const stats = [
     {
-      label: "CURRENT GPA",
-      value: "3.62 / 4.0",
+      label: "CURRENT CGPA",
+      value: "7.5 / 10",
       desc: "B.Tech AI & Data Science"
     },
     {
@@ -15,12 +15,12 @@ function About() {
     },
     {
       label: "PROFESSIONAL EXP",
-      value: "2+ Years",
-      desc: "Internships & Projects"
+      value: "0 - 1 Year",
+      desc: "Internships & Live Projects"
     },
     {
       label: "TECH & TOOLS",
-      value: "34+",
+      value: "20+",
       desc: "Verified Stack Items"
     }
   ];
