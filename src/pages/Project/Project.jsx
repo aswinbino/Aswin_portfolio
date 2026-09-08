@@ -13,7 +13,7 @@ const projectsData = [
   {
     id: "01",
     title: "Solo Travel",
-    realm: "Artificial Intelligence",
+    realm: "AI",
     status: "DONE",
     desc: "Automated travel itinerary generator with browser automation and AI suggestions.",
     tech: ["React", "Node.js", "Playwright", "Tailwind CSS"],
@@ -24,7 +24,7 @@ const projectsData = [
   {
     id: "02",
     title: "AI Blog Writer",
-    realm: "Artificial Intelligence",
+    realm: "AI",
     status: "DONE",
     desc: "AI-powered blog generation platform using multi-agent LLMs.",
     tech: ["Python", "OpenAI API", "FastAPI", "React", "Tailwind CSS"],
@@ -35,7 +35,7 @@ const projectsData = [
   {
     id: "03",
     title: "Legal Docs Platform",
-    realm: "Artificial Intelligence",
+    realm: "AI",
     status: "DONE",
     desc: "Web application for managing legal documents and contracts.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
@@ -79,7 +79,7 @@ const projectsData = [
   {
     id: "07",
     title: "Weather Dashboard",
-    realm: "Software Architecture",
+    realm: "Software",
     status: "DONE",
     desc: "Real‑time weather visualization using public APIs.",
     tech: ["React", "Tailwind CSS", "OpenWeather API"],
@@ -112,7 +112,7 @@ const projectsData = [
   {
     id: "10",
     title: "Creative Developer Portfolio",
-    realm: "Software Architecture",
+    realm: "Software",
     status: "DONE",
     desc: "Modern full‑stack portfolio website built with React 19 + Vite + Tailwind, featuring micro‑interactions and dark aesthetics.",
     tech: ["React 19", "Tailwind CSS", "Vite", "JavaScript", "Lucide Icons"],
@@ -129,7 +129,7 @@ export default function Project() {
   const [viewMode, setViewMode] = useState("list"); // 'list' | 'grid'
   const [hoveredProject, setHoveredProject] = useState(null);
 
-  const realms = ["All Realms", "Artificial Intelligence", "Software Architecture", "Full-Stack"];
+  const realms = ["All Realms", "AI", "Software", "Full-Stack"];
 
   const filteredProjects = projectsData.filter((p) => {
     const matchesRealm = activeRealm === "All Realms" || p.realm === activeRealm;
